@@ -1,11 +1,10 @@
 import { Navigate } from "react-router-dom";
+import { useUser } from "../contexts/UserProvider";
 
 function PrivateRoute({ children }: { children: JSX.Element }) {
-  const response = localStorage.getItem("userInfo");
-  if (response) {
-    const userInfo = JSON.parse(response);
-    if (userInfo.fullName && userInfo.email && userInfo.phoneNumber)
-      return children;
+  const { user } = useUser();
+  if (user) {
+    return children;
   } else
     return (
       <Navigate
@@ -19,8 +18,6 @@ function PrivateRoute({ children }: { children: JSX.Element }) {
         replace
       />
     );
-
-  return <div>{}</div>;
 }
 
 export default PrivateRoute;

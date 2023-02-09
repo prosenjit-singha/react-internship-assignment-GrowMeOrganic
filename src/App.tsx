@@ -1,6 +1,7 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { RouterProvider } from "react-router-dom";
 import { useThemeToggler } from "./contexts/ThemeTogglerProvider";
+import UserProvider from "./contexts/UserProvider";
 import router from "./routes";
 
 function App() {
@@ -8,7 +9,9 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <RouterProvider router={router} />
+      <UserProvider>
+        <RouterProvider router={router} />
+      </UserProvider>
     </ThemeProvider>
   );
 }

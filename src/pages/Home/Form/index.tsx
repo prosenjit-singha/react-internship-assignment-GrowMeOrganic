@@ -1,6 +1,7 @@
 import { Paper, TextField, Typography, Button } from "@mui/material";
 import { useFormik, FormikHelpers } from "formik";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../contexts/UserProvider";
 import formSchema from "../../../schemas/formSchema";
 import UserInfo from "../../../types/userInfo.type";
 
@@ -12,6 +13,7 @@ const initialValues: UserInfo = {
 
 function Form() {
   const navigate = useNavigate();
+  const { updateUserData } = useUser();
   const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues,
@@ -21,7 +23,7 @@ function Form() {
 
   function onSubmit(values: UserInfo, actions: FormikHelpers<UserInfo>) {
     // save data to the local storage
-    localStorage.setItem("userInfo", JSON.stringify(values));
+    updateUserData(values);
 
     //navigate to the second page
     navigate("/list-of-data");
