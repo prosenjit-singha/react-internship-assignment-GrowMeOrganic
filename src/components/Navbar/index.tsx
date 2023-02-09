@@ -7,18 +7,20 @@ import { Link } from "react-router-dom";
 function Navbar() {
   const { toggleTheme, isDark } = useThemeToggler();
   return (
-    <AppBar position="sticky">
+    <AppBar
+      position="sticky"
+      sx={({ palette }) => ({ bgcolor: palette.background.default })}
+    >
       <Toolbar
         sx={{
           display: "flex",
           alignItems: "center",
-          color: "white !important",
         }}
       >
         <Typography variant="h4" component={Link} to="/">
           GrowMeOrganic
         </Typography>
-        <IconButton onClick={toggleTheme} sx={{ ml: "auto", color: "inherit" }}>
+        <IconButton onClick={toggleTheme} sx={{ ml: "auto" }}>
           {isDark ? <LightModeIcon /> : <DarkModeIcon />}
         </IconButton>
       </Toolbar>
