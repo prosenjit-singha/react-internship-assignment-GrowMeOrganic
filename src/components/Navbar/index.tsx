@@ -2,6 +2,7 @@ import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useThemeToggler } from "../../contexts/ThemeTogglerProvider";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const { toggleTheme, isDark } = useThemeToggler();
@@ -14,7 +15,7 @@ function Navbar() {
           color: "white !important",
         }}
       >
-        <Typography variant="h4" component="h1">
+        <Typography variant="h4" component={Link} to="/">
           GrowMeOrganic
         </Typography>
         <IconButton onClick={toggleTheme} sx={{ ml: "auto", color: "inherit" }}>
