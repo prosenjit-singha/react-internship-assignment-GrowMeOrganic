@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Paper, TextField, Typography, Button } from "@mui/material";
+import { Box, TextField, Typography, Button, lighten } from "@mui/material";
 import { useFormik, FormikHelpers } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../../contexts/UserProvider";
@@ -42,14 +42,16 @@ function Form() {
   }, [user]);
 
   return (
-    <Paper
+    <Box
       sx={(theme) => ({
         p: 3,
+        borderRadius: 2,
         display: "flex",
         flexDirection: "column",
         gap: 2,
         minWidth: ["100%", "60%", "40%", "25%"],
         boxShadow: ["none", theme.shadows[5]],
+        bgcolor: ["transparent", lighten(theme.palette.background.paper, 0.05)],
       })}
       component="form"
       onSubmit={handleSubmit}
@@ -97,7 +99,7 @@ function Form() {
       >
         Submit
       </Button>
-    </Paper>
+    </Box>
   );
 }
 

@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 
 const Logo = () => (
   <Typography
-    variant="h4"
     component={Link}
     to="/"
-    color="primary.main"
-    fontWeight={600}
+    sx={{
+      color: "primary.main",
+      fontWeight: 600,
+      fontSize: "clamp(1.5rem, 5vw, 2rem)",
+    }}
   >
     GrowMeOrganic
   </Typography>
