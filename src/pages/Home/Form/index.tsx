@@ -2,8 +2,9 @@ import { Paper, TextField, Typography, Button } from "@mui/material";
 import { useFormik, FormikHelpers } from "formik";
 import { useNavigate } from "react-router-dom";
 import formSchema from "../../../schemas/formSchema";
+import UserInfo from "../../../types/userInfo.type";
 
-const initialValues = {
+const initialValues: UserInfo = {
   fullName: "",
   phoneNumber: "",
   email: "",
@@ -18,10 +19,7 @@ function Form() {
       onSubmit,
     });
 
-  function onSubmit(
-    values: typeof initialValues,
-    actions: FormikHelpers<typeof initialValues>
-  ) {
+  function onSubmit(values: UserInfo, actions: FormikHelpers<UserInfo>) {
     // save data to the local storage
     localStorage.setItem("userInfo", JSON.stringify(values));
 
