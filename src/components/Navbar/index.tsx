@@ -3,6 +3,7 @@ import DarkModeIcon from "@mui/icons-material/DarkMode";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import { useThemeToggler } from "../../contexts/ThemeTogglerProvider";
 import { Link } from "react-router-dom";
+import Logo from "../Logo";
 
 function Navbar() {
   const { toggleTheme, isDark } = useThemeToggler();
@@ -17,9 +18,7 @@ function Navbar() {
           alignItems: "center",
         }}
       >
-        <Typography variant="h4" component={Link} to="/">
-          GrowMeOrganic
-        </Typography>
+        <Logo />
         <IconButton onClick={toggleTheme} sx={{ ml: "auto" }}>
           {isDark ? <LightModeIcon /> : <DarkModeIcon />}
         </IconButton>

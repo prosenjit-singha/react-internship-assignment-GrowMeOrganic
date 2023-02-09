@@ -13,10 +13,10 @@ const initialValues: UserInfo = {
 
 function Form() {
   const navigate = useNavigate();
-  const { updateUserData } = useUser();
+  const { updateUserData, user } = useUser();
   const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
     useFormik({
-      initialValues,
+      initialValues: user || initialValues,
       validationSchema: formSchema,
       onSubmit,
     });
@@ -30,14 +30,14 @@ function Form() {
   }
   return (
     <Paper
-      elevation={5}
-      sx={{
+      sx={(theme) => ({
         p: 3,
         display: "flex",
         flexDirection: "column",
         gap: 2,
         minWidth: ["100%", "60%", "40%", "25%"],
-      }}
+        boxShadow: ["none", theme.shadows[5]],
+      })}
       component="form"
       onSubmit={handleSubmit}
     >

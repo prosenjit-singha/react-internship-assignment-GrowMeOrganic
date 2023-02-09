@@ -20,7 +20,6 @@ const Home = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        mt: 4,
         minHeight: "calc(100vh - 56px)",
       }}
     >

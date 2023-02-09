@@ -8,7 +8,7 @@ export const getTheme = (mode: Mode) => {
     palette: {
       mode: isDark ? "dark" : "light",
       primary: {
-        main: "#468e66",
+        main: isDark ? "#4bab76" : "#468e66",
       },
       background: {
         default: isDark ? "#16283a" : "#ecf2ff",
