@@ -1,6 +1,8 @@
-import { Paper, TextField, Typography } from "@mui/material";
+import { Paper, TextField, Typography, Button } from "@mui/material";
 import { useFormik, FormikHelpers } from "formik";
+import { useNavigate } from "react-router-dom";
 import formSchema from "../../../schemas/formSchema";
+
 const initialValues = {
   fullName: "",
   phoneNumber: "",
@@ -8,6 +10,7 @@ const initialValues = {
 };
 
 function Form() {
+  const navigate = useNavigate();
   const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
     useFormik({
       initialValues,
@@ -19,12 +22,22 @@ function Form() {
     values: typeof initialValues,
     actions: FormikHelpers<typeof initialValues>
   ) {
-    console.log(values);
+    // save data to the local storage
+    localStorage.setItem("userInfo", JSON.stringify(values));
+
+    //navigate to the second page
+    navigate("/list-of-data");
   }
   return (
     <Paper
       elevation={5}
-      sx={{ p: 3, display: "flex", flexDirection: "column", gap: 2 }}
+      sx={{
+        p: 3,
+        display: "flex",
+        flexDirection: "column",
+        gap: 2,
+        minWidth: ["100%", "60%", "40%", "25%"],
+      }}
       component="form"
       onSubmit={handleSubmit}
     >
@@ -64,6 +77,13 @@ function Form() {
         placeholder="example@domain.com"
         size="small"
       />
+      <Button
+        type="submit"
+        variant="contained"
+        sx={{ width: "fit-content", mx: "auto" }}
+      >
+        Submit
+      </Button>
     </Paper>
   );
 }
