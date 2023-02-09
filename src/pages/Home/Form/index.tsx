@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Paper, TextField, Typography, Button } from "@mui/material";
 import { useFormik, FormikHelpers } from "formik";
 import { useNavigate } from "react-router-dom";
@@ -14,12 +15,19 @@ const initialValues: UserInfo = {
 function Form() {
   const navigate = useNavigate();
   const { updateUserData, user } = useUser();
-  const { values, touched, errors, handleChange, handleBlur, handleSubmit } =
-    useFormik({
-      initialValues: user || initialValues,
-      validationSchema: formSchema,
-      onSubmit,
-    });
+  const {
+    values,
+    touched,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    setValues,
+  } = useFormik({
+    initialValues: user || initialValues,
+    validationSchema: formSchema,
+    onSubmit,
+  });
 
   function onSubmit(values: UserInfo, actions: FormikHelpers<UserInfo>) {
     // save data to the local storage
@@ -28,6 +36,11 @@ function Form() {
     //navigate to the second page
     navigate("/list-of-data");
   }
+
+  useEffect(() => {
+    if (!user) setValues(initialValues);
+  }, [user]);
+
   return (
     <Paper
       sx={(theme) => ({
