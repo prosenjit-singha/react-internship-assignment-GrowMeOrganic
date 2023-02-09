@@ -27,6 +27,7 @@ const Home = () => {
         open={error.state}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
         onClose={handleAlertClose}
+        autoHideDuration={3000}
       >
         <Alert severity="warning" onClose={handleAlertClose}>
           {error.message}
