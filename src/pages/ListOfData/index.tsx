@@ -10,7 +10,7 @@ const columns: GridColDef[] = [
 ];
 
 const ListOfData = () => {
-  const { data, isLoading } = usePosts();
+  const { data } = usePosts();
 
   return (
     <Box sx={{ height: 680, width: "100%", px: [2, 3], py: [2, 3] }}>
@@ -18,7 +18,7 @@ const ListOfData = () => {
         rows={data}
         columns={columns}
         pageSize={10}
-        // rowsPerPageOptions={[5]}
+        rowsPerPageOptions={[10]}
         disableSelectionOnClick
         experimentalFeatures={{ newEditingApi: true }}
       />

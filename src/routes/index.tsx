@@ -3,6 +3,7 @@ import Root from "../layouts/Root";
 import Home from "../pages/Home";
 import ListOfData from "../pages/ListOfData";
 import PageNotFound from "../pages/PageNotFound";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,11 @@ const router = createBrowserRouter([
       },
       {
         path: "list-of-data",
-        element: <ListOfData />,
+        element: (
+          <PrivateRoute>
+            <ListOfData />
+          </PrivateRoute>
+        ),
       },
       {
         path: "*",
